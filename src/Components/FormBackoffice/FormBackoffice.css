@@ -1,0 +1,28 @@
+.form-placeholder {
+  font-size: 32px;
+  border: solid 2px black;
+  width: 300px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: poiner;
+  margin: 10px;
+}
+
+.btns-form-div {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  padding-right: 10px;
+}
+
+.editer {
+  font-size: 16px;
+  margin-right: 5px;
+}
+.voir {
+  font-size: 16px;
+}

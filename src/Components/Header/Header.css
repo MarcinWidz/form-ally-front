@@ -1,0 +1,16 @@
+.header-div {
+  height: 100px;
+  width: 100%;
+  background-color: red;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.login-btn {
+  cursor: pointer;
+}
+
+.logo {
+  cursor: pointer;
+}

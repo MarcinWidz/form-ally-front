@@ -1,30 +1,25 @@
 import ".//QuestionComponent.css";
 import { useState } from "react";
+import axios from "axios";
 
-function QuestionComponent({ order, type, body, setBody, setAlert }) {
+function QuestionComponent({
+  order,
+  type,
+  setAlert,
+  typeState,
+  handleAddQuestion,
+  body,
+  onChange,
+}) {
   const [updated, setUpdated] = useState(false);
 
   const handleChange = (event) => {
-    setBody({ value: event.target.value });
-    setUpdated(!updated);
+    onChange(event.target.value);
+    console.log("event in the child:", event.target.value);
   };
+  console.log("body in the child:", body);
 
   let input;
-
-  // if (type === "text") {
-  //   input = (
-  //     <input type='text' onChange={handleChange} className='text-field'></input>
-  //   );
-  // } else if (type === "email") {
-  //   input = (
-  //     <input
-  //       type='email'
-  //       onChange={handleChange}
-  //       className='text-field'
-  //     ></input>
-  //   );
-  // } else if (type === "note") {
-  // }
 
   return (
     <div>
@@ -34,15 +29,16 @@ function QuestionComponent({ order, type, body, setBody, setAlert }) {
         </div>
         <input
           type='text'
+          // value={body}
           onChange={handleChange}
           className='input-field'
         ></input>
-
-        <div style={{ display: "flex" }}>
+        <button onClick={handleAddQuestion}>Add</button>
+        {/* <div style={{ display: "flex" }}>
           <div className='shuffle-up'>up</div>
           <div className='shuffle-down'>down</div>
           <div className='delete'>delete</div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

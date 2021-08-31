@@ -13,12 +13,35 @@ function BackofficeCreate() {
   const [order, setOrder] = useState(1);
   const [body, setBody] = useState();
   const [updated, setUpdated] = useState(false);
+  const [typeState, setTypeState] = useState();
 
   const handleInputChange = (event) => {
     const value = event.target.value;
     setTitle(value);
     console.log(value);
   };
+
+  const objectToSend = { body: body, order: order, type: typeState };
+  console.log("objectToSend:", objectToSend);
+
+  const handleAddQuestion = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/backoffice/create/questions",
+        objectToSend
+      );
+      console.log("body:", body);
+      console.log("order:", order);
+      console.log("type:", typeState);
+      console.log("response:", response.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  // useEffect(() => {
+  //   setUpdated(!updated);
+  // }, [body]);
 
   const handleSaveClick = async () => {
     if (!title) {
@@ -43,64 +66,26 @@ function BackofficeCreate() {
     }
   };
 
-  const handleQuestionSave = async () => {
-    try {
-      const response = axios.post(
-        "http://localhost:3000/backoffice/create/questions",
-        {
-          body: "",
-          order: 1,
-          type: "",
-        }
-      );
-      console.log(response.data);
-    } catch (error) {
-      console.log(error.message);
-    }
+  const handleChange = (newValue) => {
+    setBody(newValue);
   };
+  console.log("body in the parent:", body);
 
   const handleQuestionCreation = (type) => {
-    // on the first click only the component is pushed so it can be displayed, but no data is pushed as it would set the first element of the array to undefined.
-
-    if (order === 0) {
-      setOrder(order + 1);
-      const copy = [...questionComponent];
-      copy.push(
-        <QuestionComponent
-          order={order}
-          type={`${type}`}
-          body={body}
-          setBody={setBody}
-          setAlert={setAlert}
-        />
-      );
-      setQuestionComponent(copy);
-      setUpdated(!updated);
-      console.log("questionsData:", questionsData);
-    } else {
-      setOrder(order + 1);
-      const copy2 = [...questionsData];
-      copy2.push({
-        body: body,
-        order: order,
-        type: type,
-      });
-      setQuestionsData(copy2);
-      const copy = [...questionComponent];
-      copy.push(
-        <QuestionComponent
-          order={order}
-          type={`${type}`}
-          body={body}
-          setBody={setBody}
-          setAlert={setAlert}
-          questionComponent={questionComponent}
-        />
-      );
-      setQuestionComponent(copy);
-      setUpdated(!updated);
-      console.log("questionsData:", questionsData);
-    }
+    const copy = [];
+    setTypeState(type);
+    copy.push(
+      <QuestionComponent
+        order={order}
+        body={body}
+        type={`${type}`}
+        onChange={handleChange}
+        setAlert={setAlert}
+        typeState={typeState}
+        handleAddQuestion={handleAddQuestion}
+      />
+    );
+    setQuestionComponent(copy);
   };
 
   return (
@@ -149,8 +134,21 @@ function BackofficeCreate() {
           Ajouter une question Oui/Non
         </div>
       </div>
-      {/* <AddQuestion></AddQuestion> */}
-      <div className='questions-container'>{questionComponent}</div>
+      {body}
+      <div className='questions-container'>
+        {questionsData.map((e, i) => {
+          return (
+            <QuestionComponent
+              order={order}
+              // body={body}
+              type={`${typeState}`}
+              setAlert={setAlert}
+              questionComponent={questionComponent}
+            />
+          );
+        })}
+        {questionComponent}
+      </div>
     </div>
   );
 }

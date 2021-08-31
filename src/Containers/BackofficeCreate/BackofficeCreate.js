@@ -8,20 +8,25 @@ function BackofficeCreate() {
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState();
   const [alert, setAlert] = useState();
-  const [questionComponent, setQuestionComponent] = useState([]);
   const [questionsData, setQuestionsData] = useState([]);
   const [order, setOrder] = useState(1);
-  const [body, setBody] = useState();
-  const [updated, setUpdated] = useState(false);
-  const [typeState, setTypeState] = useState();
+  const [body, setBody] = useState("");
+  const [type, setType] = useState("");
+  const [show, setShow] = useState(false);
 
-  const handleInputChange = (event) => {
+  const handleTitleChange = (event) => {
     const value = event.target.value;
     setTitle(value);
     console.log(value);
   };
 
-  const objectToSend = { body: body, order: order, type: typeState };
+  const handleBodyChange = (e) => {
+    setBody(e.target.value);
+    console.log("bbbbb:", body);
+  };
+
+  const objectToSend = { body: body, order: order, type: type };
+
   console.log("objectToSend:", objectToSend);
 
   const handleAddQuestion = async () => {
@@ -30,18 +35,11 @@ function BackofficeCreate() {
         "http://localhost:3000/backoffice/create/questions",
         objectToSend
       );
-      console.log("body:", body);
-      console.log("order:", order);
-      console.log("type:", typeState);
       console.log("response:", response.data);
     } catch (error) {
       console.log(error.message);
     }
   };
-
-  // useEffect(() => {
-  //   setUpdated(!updated);
-  // }, [body]);
 
   const handleSaveClick = async () => {
     if (!title) {
@@ -66,26 +64,11 @@ function BackofficeCreate() {
     }
   };
 
-  const handleChange = (newValue) => {
-    setBody(newValue);
-  };
   console.log("body in the parent:", body);
 
   const handleQuestionCreation = (type) => {
-    const copy = [];
-    setTypeState(type);
-    copy.push(
-      <QuestionComponent
-        order={order}
-        body={body}
-        type={`${type}`}
-        onChange={handleChange}
-        setAlert={setAlert}
-        typeState={typeState}
-        handleAddQuestion={handleAddQuestion}
-      />
-    );
-    setQuestionComponent(copy);
+    setType(type);
+    setShow(true);
   };
 
   return (
@@ -93,7 +76,7 @@ function BackofficeCreate() {
       <div className='header'>
         <div>Back</div>
         <input
-          onChange={handleInputChange}
+          onChange={handleTitleChange}
           className='title'
           placeholder='title'
           type='text'
@@ -134,20 +117,26 @@ function BackofficeCreate() {
           Ajouter une question Oui/Non
         </div>
       </div>
-      {body}
       <div className='questions-container'>
+        {show && (
+          <QuestionComponent
+            handleBodyChange={handleBodyChange}
+            handleAddQuestion={handleAddQuestion}
+            type={type}
+            order={order}
+          />
+        )}
         {questionsData.map((e, i) => {
-          return (
-            <QuestionComponent
-              order={order}
-              // body={body}
-              type={`${typeState}`}
-              setAlert={setAlert}
-              questionComponent={questionComponent}
-            />
-          );
+          // return (
+          //   <QuestionComponent
+          //     order={order}
+          //     body={body}
+          //     type={`${typeState}`}
+          //     setAlert={setAlert}
+          //     questionComponent={questionComponent}
+          //   />
+          // );
         })}
-        {questionComponent}
       </div>
     </div>
   );

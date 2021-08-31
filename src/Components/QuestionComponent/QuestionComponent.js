@@ -1,26 +1,11 @@
 import ".//QuestionComponent.css";
-import { useState } from "react";
-import axios from "axios";
 
 function QuestionComponent({
   order,
   type,
-  setAlert,
-  typeState,
   handleAddQuestion,
-  body,
-  onChange,
+  handleBodyChange,
 }) {
-  const [updated, setUpdated] = useState(false);
-
-  const handleChange = (event) => {
-    onChange(event.target.value);
-    console.log("event in the child:", event.target.value);
-  };
-  console.log("body in the child:", body);
-
-  let input;
-
   return (
     <div>
       <div className='question-component'>
@@ -29,11 +14,16 @@ function QuestionComponent({
         </div>
         <input
           type='text'
-          // value={body}
-          onChange={handleChange}
+          onChange={handleBodyChange}
           className='input-field'
         ></input>
-        <button onClick={handleAddQuestion}>Add</button>
+        <button
+          onClick={() => {
+            handleAddQuestion();
+          }}
+        >
+          Add
+        </button>
         {/* <div style={{ display: "flex" }}>
           <div className='shuffle-up'>up</div>
           <div className='shuffle-down'>down</div>

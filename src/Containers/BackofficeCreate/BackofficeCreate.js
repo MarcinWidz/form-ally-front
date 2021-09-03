@@ -13,6 +13,7 @@ function BackofficeCreate() {
   const [body, setBody] = useState("");
   const [type, setType] = useState("");
   const [show, setShow] = useState(false);
+  const [saved, setSaved] = useState(false);
 
   const handleTitleChange = (event) => {
     const value = event.target.value;
@@ -20,8 +21,8 @@ function BackofficeCreate() {
     console.log(value);
   };
 
-  const handleBodyChange = (e) => {
-    setBody(e.target.value);
+  const handleBodyChange = (event) => {
+    setBody(event.target.value);
     console.log("bbbbb:", body);
   };
 
@@ -30,17 +31,23 @@ function BackofficeCreate() {
   console.log("objectToSend:", objectToSend);
 
   const handleAddQuestion = async () => {
+    setSaved(true);
     try {
       const response = await axios.post(
         "http://localhost:3000/backoffice/create/questions",
         objectToSend
       );
       console.log("response:", response.data);
+      const copy = [...questionsData];
+      copy.push(response.data);
+      setQuestionsData(copy);
+      setBody("");
     } catch (error) {
       console.log(error.message);
     }
+    setOrder(order + 1);
   };
-
+  console.log(questionsData);
   const handleSaveClick = async () => {
     if (!title) {
       setAlert("Le titre du formulaire ne peux pas être vide");
@@ -63,8 +70,6 @@ function BackofficeCreate() {
       }
     }
   };
-
-  console.log("body in the parent:", body);
 
   const handleQuestionCreation = (type) => {
     setType(type);
@@ -123,19 +128,20 @@ function BackofficeCreate() {
             handleBodyChange={handleBodyChange}
             handleAddQuestion={handleAddQuestion}
             type={type}
-            order={order}
+            setSaved={setSaved}
+            inputBody={body}
           />
         )}
         {questionsData.map((e, i) => {
-          // return (
-          //   <QuestionComponent
-          //     order={order}
-          //     body={body}
-          //     type={`${typeState}`}
-          //     setAlert={setAlert}
-          //     questionComponent={questionComponent}
-          //   />
-          // );
+          return (
+            <QuestionComponent
+              saved={saved}
+              index={i}
+              order={i + 1}
+              body={e.body}
+              type={e.type}
+            />
+          );
         })}
       </div>
     </div>

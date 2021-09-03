@@ -1,7 +1,8 @@
 // Imports of React elements
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 // imports of the containers:
 import Home from "./Containers/Home/Home";
@@ -19,6 +20,8 @@ function App() {
   const [logged, setLogged] = useState(false);
   const [passwordInput, setPasswordInput] = useState("");
   const [connectButton, setConnectButton] = useState("Backoffice");
+  const [userId, setUserId] = useState("");
+  const [password, setPassword] = useState();
 
   return (
     <Router>
@@ -32,7 +35,7 @@ function App() {
         <Route exact path='/'>
           <Home />
         </Route>
-        <Route exact path='/form'>
+        <Route exact path='/form/:slug'>
           <FormUserAnswer />
         </Route>
         <Route path='/backoffice/login'>
@@ -41,10 +44,14 @@ function App() {
             setPasswordInput={setPasswordInput}
             setLogged={setLogged}
             setConnectButton={setConnectButton}
+            setUserId={setUserId}
+            userId={userId}
+            setPassword={setPassword}
+            password={password}
           />
         </Route>
         <Route exact path='/backoffice'>
-          <BackofficeHome />
+          <BackofficeHome userId={userId} />
         </Route>
         <Route path='/backoffice/create'>
           <BackofficeCreate />

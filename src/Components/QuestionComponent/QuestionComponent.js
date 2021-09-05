@@ -1,5 +1,8 @@
 import ".//QuestionComponent.css";
+import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
+
 function QuestionComponent({
   order,
   type,
@@ -8,19 +11,57 @@ function QuestionComponent({
   saved,
   body,
   inputBody,
+  questionsData,
+  setQuestionsData,
+  index,
 }) {
-  console.log("body:", body);
-  console.log("saved:", saved);
+  const handleDelete = async () => {
+    try {
+      console.log(questionsData);
+      const response = axios.delete(
+        `http://localhost:3000/backoffice/delete/${questionsData[index]._id}`
+      );
+      const copy = [...questionsData];
+      copy.splice(index, 1);
+      console.log(index);
+      setQuestionsData(copy);
+      console.log("QUESTiON DATA:", questionsData);
+      console.log(response.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <div>
       <div className='question-component'>
         <div className='order-type'>
-          {order} {type}
+          {type === "note" ? (
+            <div className='note-component-div'>
+              <p className='order'>{order}</p>
+              <FontAwesomeIcon className='icon' icon='sticky-note' /> {type}
+            </div>
+          ) : type === "text" ? (
+            <div className='text-component-div'>
+              <p className='order'>{order}</p>
+              <FontAwesomeIcon className='icon' icon='file-alt' /> {type}
+            </div>
+          ) : type === "yes/no" ? (
+            <div className='yes-component-div'>
+              <p className='order'>{order}</p>
+              <FontAwesomeIcon className='icon' icon='check' /> {type}
+            </div>
+          ) : (
+            <div className='email-component-div'>
+              <p className='order'>{order}</p>
+              <FontAwesomeIcon className='icon' icon='envelope' /> {type}
+            </div>
+          )}
         </div>
         {!saved ? (
           <input
+            placeholder='Saisissez votre question ici'
             value={inputBody}
-            type='text'
             onChange={handleBodyChange}
             className='input-field'
           ></input>
@@ -29,17 +70,23 @@ function QuestionComponent({
         )}
         {!saved ? (
           <button
+            className='addQuestion'
             onClick={() => {
-              handleAddQuestion();
+              handleAddQuestion(type);
             }}
           >
             Add
           </button>
         ) : (
           <div style={{ display: "flex" }}>
-            <button className='shuffle-up'>up</button>
-            <button className='shuffle-down'>down</button>
-            <button className='delete'>delete</button>
+            <button
+              onClick={() => {
+                handleDelete();
+              }}
+              className='delete'
+            >
+              delete
+            </button>
           </div>
         )}
       </div>

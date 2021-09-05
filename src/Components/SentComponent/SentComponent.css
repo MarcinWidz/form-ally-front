@@ -1,8 +1,4 @@
-.flex {
-  display: flex;
-}
-
-.yesNoButtons {
+.restartBtn {
   cursor: pointer;
   border: 1px solid #62c167;
   color: #62c167;
@@ -17,7 +13,11 @@
   margin-bottom: 15px;
 }
 
-.yesNoButtons:hover {
+.restartBtn:hover {
   background-color: #62c167;
   color: white;
+}
+
+.sentDiv {
+  display: flex;
 }

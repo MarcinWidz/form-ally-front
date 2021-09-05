@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import { useState } from "react";
 import "./Login.css";
+import Cookies from "js-cookie";
 
 function Login({
   setPasswordInput,
@@ -29,10 +29,13 @@ function Login({
       console.log("userId:", userId);
       setPassword(response.data[0].password);
       setUserId(response.data[0]._id);
+      Cookies.set("password", response.data[0].password);
     } catch (error) {
       console.log(error.message);
     }
   };
+
+  console.log("Cookie:", Cookies.get("password"));
   if (password === passwordInput) {
     console.log("paswordInput: ", passwordInput);
     console.log("pasword: ", password);
@@ -41,12 +44,18 @@ function Login({
     setConnectButton("Déconnexion");
   }
   return (
-    <div>
-      <h1>Accedér à mon espace Admin</h1>
-      <form onSubmit={handleSubmit} className='form'>
-        <input onChange={handlePasswordChange} type='text' />
-        <input type='submit' />
-      </form>
+    <div className='login-container'>
+      <div>
+        <h1>Accedér à mon espace Admin</h1>
+        <form onSubmit={handleSubmit} className='form'>
+          <input
+            className='login-input'
+            onChange={handlePasswordChange}
+            type='password'
+          />
+          <input className='login-button' type='submit' />
+        </form>
+      </div>
     </div>
   );
 }

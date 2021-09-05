@@ -1,16 +1,38 @@
 .header-div {
   height: 100px;
   width: 100%;
-  background-color: red;
   display: flex;
+  border-bottom: 1px solid #e5e5e5;
   justify-content: space-between;
   padding: 20px;
 }
 
 .login-btn {
   cursor: pointer;
+  background-color: #62c167;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 9px;
+  font-size: 18px;
+  border-radius: 5px;
+  font-weight: 700;
 }
 
+.login-btn:hover {
+  background-color: white;
+  color: #62c167;
+  border: 1px solid #62c167;
+}
 .logo {
   cursor: pointer;
+}
+
+.title {
+  width: 550px;
+  height: 50px;
+  border-radius: 5px;
+  outline: none;
+  padding: 10px;
 }

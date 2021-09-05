@@ -1,4 +1,40 @@
 .form {
-  width: 300px;
   height: 150px;
+  display: flex;
+}
+
+.login-container {
+  display: flex;
+  height: 800px;
+  justify-content: center;
+  align-items: center;
+}
+h1 {
+  margin-bottom: 10px;
+}
+
+.login-input {
+  border: 1px solid #62c172;
+  border-radius: 5px;
+  height: 50px;
+  width: 300px;
+  flex: 3;
+  margin-right: 10px;
+}
+
+.login-button {
+  cursor: pointer;
+  background-color: #62c167;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 9px;
+  font-size: 18px;
+  border-radius: 5px;
+  font-weight: 700;
+  border: none;
+  height: 50px;
+  flex: 1;
+  margin: 10 px;
 }

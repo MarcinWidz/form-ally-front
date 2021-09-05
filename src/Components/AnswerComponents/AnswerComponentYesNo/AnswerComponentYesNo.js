@@ -3,10 +3,25 @@ import "./AnswerComponentYesNo.css";
 
 function AnswerComponentYesNo({ setAnswers, formInfo, counter }) {
   return (
-    <div>
+    <div className=''>
       <p>{formInfo.questions[counter].body}</p>
-      <div className='input-div'>
-        <textarea name='' id='' cols='30' rows='10'></textarea>
+      <div className='flex'>
+        <div
+          className='yesNoButtons'
+          onClick={() => {
+            setAnswers("Oui");
+          }}
+        >
+          Oui
+        </div>
+        <div
+          onClick={() => {
+            setAnswers("Oui");
+          }}
+          className='yesNoButtons'
+        >
+          Non
+        </div>
       </div>
     </div>
   );

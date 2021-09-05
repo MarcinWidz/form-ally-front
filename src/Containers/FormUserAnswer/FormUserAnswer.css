@@ -1,0 +1,37 @@
+.bodyDiv {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
+
+.center {
+  width: 1024px;
+  background-color: #eaf9ec;
+  color: #62c193;
+  border-radius: 10px;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nextBtn {
+  cursor: pointer;
+  background-color: #62c167;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 9px;
+  font-size: 18px;
+  border-radius: 5px;
+  font-weight: 700;
+  border: none;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.nextBtn:hover {
+  opacity: 0.8;
+}

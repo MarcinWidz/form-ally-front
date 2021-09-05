@@ -1,14 +1,25 @@
 .form-placeholder {
   font-size: 32px;
   border: solid 2px black;
-  width: 300px;
-  height: 100px;
+  width: 350px;
+  height: 200px;
   display: flex;
-  justify-content: center;
-  align-items: center;
   position: relative;
   cursor: poiner;
   margin: 10px;
+  background: linear-gradient(
+    269.83deg,
+    #eaedef 0.16%,
+    rgba(234, 238, 239, 0.35) 98.29%
+  );
+  border-radius: 10px;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.form-placeholder h4 {
+  color: #0e401c;
+  padding: 10px;
 }
 
 .btns-form-div {
@@ -20,9 +31,29 @@
 }
 
 .editer {
-  font-size: 16px;
-  margin-right: 5px;
+  cursor: pointer;
+  color: #62c167;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 9px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: none;
+  height: 30px;
+  margin: 10px;
 }
 .voir {
-  font-size: 16px;
+  cursor: pointer;
+  background-color: #62c167;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 9px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: none;
+  height: 30px;
+  margin: 10px;
 }

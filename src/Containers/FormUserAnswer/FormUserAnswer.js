@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import "./FormUserAnswer.css";
 import { useLocation } from "react-router";
 import axios from "axios";
@@ -22,7 +22,16 @@ function FormUserAnswer(props) {
   const type = formInfo.questions[counter].type;
   const length = formInfo.questions.length;
   const [sent, setSent] = useState(null);
-  const [update, setUpdate] = useState();
+  const [uuidState, setUuIdState] = useState(Math.floor(Math.random() * 100));
+
+  useEffect(() => {
+    const generateUuID = () => {
+      const uuid = Math.floor(Math.random() * 100);
+      setUuIdState(uuid);
+      console.log("qdqsdfsdfsdqfzf:", uuidState);
+    };
+    generateUuID();
+  }, []);
 
   const sendData = async () => {
     try {
@@ -30,11 +39,12 @@ function FormUserAnswer(props) {
         form_id: formInfo._id,
         question_id: formInfo.questions[counter]._id,
         body: answers,
+        uuid: uuidState,
       });
       const copy = [...dataToSend];
       copy.push(response.data);
+      console.log("RESPONSE:", response.data);
       setDataToSend(copy);
-      console.log("response.data:", response.data);
       const answer = response.data;
       updateQuestionAnswers(answer);
     } catch (error) {
@@ -42,6 +52,7 @@ function FormUserAnswer(props) {
     }
   };
 
+  console.log("UUID", uuidState);
   console.log("dataToSendState:", dataToSend);
   console.log("formInfo._id:", formInfo._id);
 
@@ -49,7 +60,7 @@ function FormUserAnswer(props) {
     console.log("ID:", answer);
     try {
       const response = await axios.post(
-        `http://localhost:3000/form/update/answers/${answer.question_id}`,
+        `http://localhost:3000/form/update/answers/${answer.form_id}`,
         answer
       );
       console.log("update:", response.data);
@@ -74,55 +85,58 @@ function FormUserAnswer(props) {
   console.log("length:", length);
   console.log("counter:", counter);
   return (
-    <div>
-      <h1>{formInfo.title}</h1>
-      {!sent ? (
-        <div>
-          {type === "note" ? (
-            <AnswerComponentNote
-              setAnswers={setAnswers}
-              counter={counter}
-              formInfo={formInfo}
-            />
-          ) : type === "email" ? (
-            <AnswerComponentEmail
-              setAnswers={setAnswers}
-              counter={counter}
-              formInfo={formInfo}
-            />
-          ) : type === "text" ? (
-            <AnswerComponentTexte
-              setAnswers={setAnswers}
-              counter={counter}
-              formInfo={formInfo}
-            />
-          ) : (
-            type === "yes/no" && (
-              <AnswerComponentYesNo
+    <div className='bodyDiv'>
+      <div className='center'>
+        {!sent ? (
+          <div className='componentDiv'>
+            <h1>{formInfo.title}</h1>
+            {type === "note" ? (
+              <AnswerComponentNote
                 setAnswers={setAnswers}
                 counter={counter}
                 formInfo={formInfo}
               />
-            )
-          )}
-          <button
-            onClick={() => {
-              handleSend();
-            }}
-          >
-            Next
-          </button>
-        </div>
-      ) : (
-        <SentComponent
-          sent={sent}
-          setSent={setSent}
-          setCounter={setCounter}
-          formInfo={formInfo}
-          dataToSend={dataToSend}
-          setDataToSend={setDataToSend}
-        />
-      )}
+            ) : type === "email" ? (
+              <AnswerComponentEmail
+                setAnswers={setAnswers}
+                counter={counter}
+                formInfo={formInfo}
+              />
+            ) : type === "text" ? (
+              <AnswerComponentTexte
+                setAnswers={setAnswers}
+                counter={counter}
+                formInfo={formInfo}
+              />
+            ) : (
+              type === "yes/no" && (
+                <AnswerComponentYesNo
+                  setAnswers={setAnswers}
+                  counter={counter}
+                  formInfo={formInfo}
+                />
+              )
+            )}
+            <button
+              className='nextBtn'
+              onClick={() => {
+                handleSend();
+              }}
+            >
+              Next
+            </button>
+          </div>
+        ) : (
+          <SentComponent
+            sent={sent}
+            setSent={setSent}
+            setCounter={setCounter}
+            formInfo={formInfo}
+            dataToSend={dataToSend}
+            setDataToSend={setDataToSend}
+          />
+        )}
+      </div>
     </div>
   );
 }

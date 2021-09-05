@@ -1,0 +1,7 @@
+.email-component-div,
+.note-component-div,
+.text-component-div,
+.yes-component-div {
+  width: 153px;
+  margin-right: 30px;
+}

@@ -1,0 +1,21 @@
+.question {
+  color: #0e401c;
+  font-size: 18px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.emailfield {
+  width: 450px;
+  height: 80px;
+  border: none;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  margin-bottom: 15px;
+  outline: #62c167;
+  padding: 10px;
+}
+
+.emailfield ::placeholder {
+  margin: 20px;
+}

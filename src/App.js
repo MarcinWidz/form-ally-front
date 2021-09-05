@@ -2,7 +2,15 @@
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  faEnvelope,
+  faStickyNote,
+  faFileAlt,
+  faKey,
+  faCheck,
+  faExternalLinkAlt,
+} from "@fortawesome/free-solid-svg-icons";
 
 // imports of the containers:
 import Home from "./Containers/Home/Home";
@@ -12,9 +20,18 @@ import BackofficeCreate from "./Containers/BackofficeCreate/BackofficeCreate";
 import BackofficeUpdate from "./Containers/BackofficeUpdate/BackofficeUpdate";
 import BackofficeAnswers from "./Containers/BackofficeAnswers/BackofficeAnswers";
 import FormUserAnswer from "./Containers/FormUserAnswer/FormUserAnswer";
+import "react-notifications/lib/notifications.css";
 
 // imports of the components
 import Header from "./Components/Header/Header";
+library.add(
+  faEnvelope,
+  faKey,
+  faStickyNote,
+  faFileAlt,
+  faCheck,
+  faExternalLinkAlt
+);
 
 function App() {
   const [logged, setLogged] = useState(false);

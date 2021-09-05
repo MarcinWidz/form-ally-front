@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import "./Home.css";
 import axios from "axios";
 import FormUserFront from "../../Components/FormUserFront/FormUserFront";
-import { Link } from "react-router-dom";
 
 function Home() {
   const [isLoading, setisLoading] = useState(true);
@@ -25,13 +24,12 @@ function Home() {
   return isLoading ? (
     <p>Chargement...</p>
   ) : (
-    <div className='container'>
+    <div className='home-container'>
+      <h1>Choisissez le questionnaire à prendre:</h1>
       {userForms.map((e, i) => {
         return (
-          <div>
-            <Link to={{ pathname: `/form/${e.slug}`, state: { e: e } }}>
-              <FormUserFront key={i} e={e} />
-            </Link>
+          <div className='home-forms'>
+            <FormUserFront key={i} e={e} />
           </div>
         );
       })}

@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import "./SentComponent.css";
 
 function SentComponent({
   sent,
@@ -13,9 +14,6 @@ function SentComponent({
 }) {
   const remove = [];
   const history = useHistory();
-  //   console.log("data:", dataToSend);
-  //   console.log("formInfo:", formInfo);
-
   const handleClick = async () => {
     console.log(sent);
     for (let i = 0; i < dataToSend.length; i++) {
@@ -40,20 +38,24 @@ function SentComponent({
   return (
     <div>
       <h1>Vos réponses ont bien été enregistrées!</h1>
-      <button
-        onClick={() => {
-          handleClick();
-        }}
-      >
-        Recommencer
-      </button>
-      <button
-        onClick={() => {
-          history.push("/");
-        }}
-      >
-        Retourner à l'acceuil
-      </button>
+      <div className='sentDiv'>
+        <button
+          className='restartBtn'
+          onClick={() => {
+            handleClick();
+          }}
+        >
+          Recommencer
+        </button>
+        <button
+          className='restartBtn'
+          onClick={() => {
+            history.push("/");
+          }}
+        >
+          Retourner à l'acceuil
+        </button>
+      </div>
     </div>
   );
 }

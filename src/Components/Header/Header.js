@@ -1,6 +1,7 @@
 import "./Header.css";
 import logo from "../../assets/logoTellMeMore_hy1qcb_agqhbt.svg";
 import { useHistory } from "react-router-dom";
+import Cookies from "js-cookie";
 
 function Header({ logged, setLogged, connectButton, setConnectButton }) {
   let history = useHistory();
@@ -9,6 +10,7 @@ function Header({ logged, setLogged, connectButton, setConnectButton }) {
     if (logged === true) {
       setConnectButton("Backoffice");
       setLogged(false);
+      Cookies.remove("password");
       history.push("/");
     } else {
       setConnectButton("Backoffice");

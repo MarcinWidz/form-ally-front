@@ -1,31 +1,47 @@
-.question-component {
+.bigContainer {
+  height: 100vh;
+  width: 100vw;
+}
+.element {
+  background-color: #eaf9ec;
+  width: 800px;
+  border-radius: 15px;
+  margin: 15px auto;
+  padding: 15px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+}
+
+.typeContainer {
+  margin-bottom: 10px;
+}
+
+.title-render {
+  font-size: 32px;
+  padding: 20px;
+}
+.elementsContainer {
+  display: flex;
   margin: 20px;
 }
 
-.input-field {
-  width: 400px;
-  height: 50px;
-  border-radius: 5px;
-  border: none;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  outline: none;
-  padding-left: 20px;
+.question-body {
+  font-size: 24px;
+  padding: 10px;
+  margin-top: 10px;
+  color: #62c167;
+  display: flex;
+  justify-content: flex-start;
 }
 
-.addQuestion {
-  cursor: pointer;
-  background-color: #62c167;
-  color: white;
+.answer-body-div {
+  background-color: white !important;
+  width: 600px;
+  border-radius: 15px;
+  padding: 5px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 9px;
-  font-size: 18px;
-  border-radius: 5px;
-  width: 100px;
-  border: none;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .text-component-div {
@@ -73,20 +89,15 @@
   padding: 10px;
 }
 
-.delete {
-  cursor: pointer;
-  background-color: white;
-  color: #62c167;
-  padding: 0 9px;
-  font-size: 18px;
-  border-radius: 5px;
-  font-weight: 700;
-  border: none;
+.typeContainer {
+  display: flex;
+  align-items: center;
   padding: 10px;
-  margin: 10px;
-  border: solid 1px #62c167;
 }
 
-.icon {
-  margin: 0 10px;
+.answer-body {
+  font-size: 18px;
+  margin: 10px 0;
+  padding: 10px;
+  color: #333;
 }

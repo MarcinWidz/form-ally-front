@@ -38,7 +38,7 @@ function BackofficeCreate() {
     if (body) {
       try {
         const response = await axios.post(
-          "http://localhost:3000/backoffice/create/questions",
+          "https://john-doe-1978-tell-me-more.herokuapp.com/backoffice/create/questions",
           objectToSend
         );
         console.log("response:", response.data);
@@ -66,7 +66,7 @@ function BackofficeCreate() {
       setAlert(null);
       try {
         const response = await axios.post(
-          "http://localhost:3000/backoffice/create",
+          "https://john-doe-1978-tell-me-more.herokuapp.com/backoffice/create",
           {
             title: title,
             slug: title,
@@ -91,7 +91,7 @@ function BackofficeCreate() {
     try {
       console.log("Delete All:", questionsData);
       const response = axios.post(
-        "http://localhost:3000/backoffice/delete-all/",
+        "https://john-doe-1978-tell-me-more.herokuapp.com/backoffice/delete-all/",
         { questionsData }
       );
       console.log(response.data);

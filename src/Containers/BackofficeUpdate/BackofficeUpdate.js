@@ -26,7 +26,7 @@ function BackofficeUpdate({ e }) {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/backoffice/get-form-to-update/${id}`
+          `https://john-doe-1978-tell-me-more.herokuapp.com/backoffice/get-form-to-update/${id}`
         );
         console.log("mapforms:", response.data);
         setUserForms(response.data);
@@ -38,23 +38,6 @@ function BackofficeUpdate({ e }) {
     };
     fetchData();
   }, []);
-
-  // const handleDelete = async () => {
-  //   try {
-  //     console.log(questionsData);
-  //     const response = axios.delete(
-  //       `http://localhost:3000/backoffice/delete/${questionsData[index]._id}`
-  //     );
-  //     const copy = [...questionsData];
-  //     // copy.splice(index, 1);
-  //     // console.log(index);
-  //     setQuestionsData(copy);
-  //     console.log("QUESTiON DATA:", questionsData);
-  //     console.log(response.data);
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // };
 
   const handleTitleChange = (event) => {
     const value = event.target.value;
@@ -69,7 +52,7 @@ function BackofficeUpdate({ e }) {
       setAlert(null);
       try {
         const response = await axios.post(
-          `http://localhost:3000/backoffice/update-form/${id}`,
+          `https://john-doe-1978-tell-me-more.herokuapp.com/backoffice/update-form/${id}`,
           {
             title: title,
             slug: title,
@@ -89,7 +72,7 @@ function BackofficeUpdate({ e }) {
     try {
       console.log("Delete All:", questionsData);
       const response = axios.post(
-        "http://localhost:3000/backoffice/delete-all/",
+        "https://john-doe-1978-tell-me-more.herokuapp.com/backoffice/delete-all/",
         { questionsData }
       );
       console.log(response.data);

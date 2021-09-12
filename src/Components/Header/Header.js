@@ -33,7 +33,7 @@ function Header({ logged, setLogged, connectButton, setConnectButton }) {
       <img
         onClick={handleLogoClick}
         className='logo'
-        src={logo}
+        // src={logo}
         alt='tell-me-more'
       />
       <div onClick={handleBtn} className='login-btn'>

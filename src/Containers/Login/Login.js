@@ -24,7 +24,9 @@ function Login({
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.get("http://localhost:3000/account/login");
+      const response = await axios.get(
+        "https://john-doe-1978-tell-me-more.herokuapp.com/account/login"
+      );
       console.log("response:", response.data);
       console.log("userId:", userId);
       setPassword(response.data[0].password);

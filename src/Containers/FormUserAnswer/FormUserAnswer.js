@@ -35,12 +35,15 @@ function FormUserAnswer(props) {
 
   const sendData = async () => {
     try {
-      const response = await axios.post("http://localhost:3000/form/send/", {
-        form_id: formInfo._id,
-        question_id: formInfo.questions[counter]._id,
-        body: answers,
-        uuid: uuidState,
-      });
+      const response = await axios.post(
+        "https://john-doe-1978-tell-me-more.herokuapp.com/form/send/",
+        {
+          form_id: formInfo._id,
+          question_id: formInfo.questions[counter]._id,
+          body: answers,
+          uuid: uuidState,
+        }
+      );
       const copy = [...dataToSend];
       copy.push(response.data);
       console.log("RESPONSE:", response.data);

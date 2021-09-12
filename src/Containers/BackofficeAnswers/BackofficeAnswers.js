@@ -17,7 +17,7 @@ function BackofficeAnswers() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://john-doe-1978-tell-me-more.herokuapp.com/form/get/answers/${formInfo._id}`
+          `https://form-ally.herokuapp.com/form/get/answers/${formInfo._id}`
         );
         setData(response.data);
         setisLoading(false);

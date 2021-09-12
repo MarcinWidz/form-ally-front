@@ -26,7 +26,7 @@ function BackofficeUpdate({ e }) {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://john-doe-1978-tell-me-more.herokuapp.com/backoffice/get-form-to-update/${id}`
+          `https://form-ally.herokuapp.com/backoffice/get-form-to-update/${id}`
         );
         console.log("mapforms:", response.data);
         setUserForms(response.data);
@@ -52,7 +52,7 @@ function BackofficeUpdate({ e }) {
       setAlert(null);
       try {
         const response = await axios.post(
-          `https://john-doe-1978-tell-me-more.herokuapp.com/backoffice/update-form/${id}`,
+          `https://form-ally.herokuapp.com/backoffice/update-form/${id}`,
           {
             title: title,
             slug: title,
@@ -72,7 +72,7 @@ function BackofficeUpdate({ e }) {
     try {
       console.log("Delete All:", questionsData);
       const response = axios.post(
-        "https://john-doe-1978-tell-me-more.herokuapp.com/backoffice/delete-all/",
+        "https://form-ally.herokuapp.com/backoffice/delete-all/",
         { questionsData }
       );
       console.log(response.data);

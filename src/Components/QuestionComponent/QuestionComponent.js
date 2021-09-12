@@ -19,7 +19,7 @@ function QuestionComponent({
     try {
       console.log(questionsData);
       const response = axios.delete(
-        `https://john-doe-1978-tell-me-more.herokuapp.com/backoffice/delete/${questionsData[index]._id}`
+        `https://form-ally.herokuapp.com/backoffice/delete/${questionsData[index]._id}`
       );
       const copy = [...questionsData];
       copy.splice(index, 1);

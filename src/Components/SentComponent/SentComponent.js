@@ -24,7 +24,7 @@ function SentComponent({
     try {
       console.log("remove in try:", remove);
       const response = axios.post(
-        "https://john-doe-1978-tell-me-more.herokuapp.com/form/restart",
+        "https://form-ally.herokuapp.com/form/restart",
         {
           ids: remove,
         }

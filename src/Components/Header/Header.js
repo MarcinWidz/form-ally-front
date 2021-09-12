@@ -1,5 +1,5 @@
 import "./Header.css";
-import logo from "../../assets/logoTellMeMore_hy1qcb_agqhbt.svg";
+import logo from "../../assets/959b150456e54f3c9857dd876a41c9c9.png";
 import { useHistory } from "react-router-dom";
 import Cookies from "js-cookie";
 
@@ -33,7 +33,7 @@ function Header({ logged, setLogged, connectButton, setConnectButton }) {
       <img
         onClick={handleLogoClick}
         className='logo'
-        // src={logo}
+        src={logo}
         alt='tell-me-more'
       />
       <div onClick={handleBtn} className='login-btn'>

@@ -57,28 +57,60 @@ function BackofficeCreate() {
   };
 
   const handleAddQuestion = async (type) => {
-    setSaved(true);
-    if (body) {
-      try {
-        const response = await axios.post(
-          "https://form-ally.herokuapp.com/backoffice/create/questions",
-          objectToSend
-        );
-        console.log("response:", response.data);
-        console.log("OBJECT TO SEND:", objectToSend);
-        const copy = [...questionsData];
-        copy.push(response.data);
-        setQuestionsData(copy);
-        setBody("");
-      } catch (error) {
-        console.log(error.message);
+    if (type === "email") {
+      const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+      const result = regex.test(body);
+      console.log("REGEX RESULT", result);
+      if (result !== true) {
+        invalidEmail();
+      } else {
+        setSaved(true);
+        if (body) {
+          try {
+            const response = await axios.post(
+              "https://form-ally.herokuapp.com/backoffice/create/questions",
+              objectToSend
+            );
+            console.log("response:", response.data);
+            console.log("OBJECT TO SEND:", objectToSend);
+            const copy = [...questionsData];
+            copy.push(response.data);
+            setQuestionsData(copy);
+            setBody("");
+          } catch (error) {
+            console.log(error.message);
+          }
+          setOrder(order + 1);
+        } else {
+          emptyQuestion();
+        }
       }
-      setOrder(order + 1);
     } else {
-      emptyQuestion();
+      setSaved(true);
+      if (body) {
+        try {
+          const response = await axios.post(
+            "https://form-ally.herokuapp.com/backoffice/create/questions",
+            objectToSend
+          );
+          console.log("response:", response.data);
+          console.log("OBJECT TO SEND:", objectToSend);
+          const copy = [...questionsData];
+          copy.push(response.data);
+          setQuestionsData(copy);
+          setBody("");
+        } catch (error) {
+          console.log(error.message);
+        }
+        setOrder(order + 1);
+      } else {
+        emptyQuestion();
+      }
     }
   };
+
   console.log("QUESTIONS DATA:", questionsData);
+
   const handleSaveClick = async () => {
     if (!title) {
       emptyTitle();
@@ -106,16 +138,6 @@ function BackofficeCreate() {
 
   const handleQuestionCreation = (type) => {
     setType(type);
-    if (type === "email") {
-      const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
-      const result = regex(body);
-      console.log("REGEX RESULT", result);
-      if (result !== true) {
-        invalidEmail();
-      }
-    } else {
-      setShow(true);
-    }
     setShow(true);
   };
 

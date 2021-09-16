@@ -4,14 +4,13 @@ import { useLocation } from "react-router";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import BackofficeAnswersComponent from "./BackOfficeAnswersComponent";
+import Loading from "../../Components/Loading";
 
 function BackofficeAnswers() {
   const location = useLocation();
   const formInfo = location.state.e;
   const [isLoading, setisLoading] = useState(true);
   const [data, setData] = useState();
-  const [number, setNumber] = useState(0);
-  const [render, setRender] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,11 +27,7 @@ function BackofficeAnswers() {
     fetchData();
   }, []);
 
-  return isLoading ? (
-    <p>Chargement...</p>
-  ) : (
-    <BackofficeAnswersComponent data={data} />
-  );
+  return isLoading ? <Loading /> : <BackofficeAnswersComponent data={data} />;
 }
 
 export default BackofficeAnswers;

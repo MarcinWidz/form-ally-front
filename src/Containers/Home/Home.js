@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./Home.css";
 import axios from "axios";
 import FormUserFront from "../../Components/FormUserFront/FormUserFront";
+import Loading from "../../Components/Loading";
 
 function Home() {
   const [isLoading, setisLoading] = useState(true);
@@ -16,7 +17,9 @@ function Home() {
         console.log("fetch");
         console.log("mapforms:", response.data);
         setUserForms(response.data);
-        setisLoading(false);
+        setTimeout(() => {
+          setisLoading(false);
+        }, 500);
       } catch (error) {
         console.log(error.message);
       }
@@ -24,7 +27,7 @@ function Home() {
     fetchData();
   }, []);
   return isLoading ? (
-    <p>Chargement...</p>
+    <Loading />
   ) : (
     <div className='home-container'>
       <h1>Choisissez le questionnaire à prendre:</h1>

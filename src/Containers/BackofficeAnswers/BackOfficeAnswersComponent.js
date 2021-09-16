@@ -75,12 +75,10 @@ function BackOfficeAnswersComponent({ data }) {
             {item.answers.map((render) => {
               return (
                 <div className='elementsContainer'>
-                  <div className='a'>
+                  <div className='contentContainer'>
                     <div
                       style={{
-                        width: "100%",
                         display: "flex",
-                        justifyContent: "flex-start",
                       }}
                     >
                       <div className='typeContainer'>

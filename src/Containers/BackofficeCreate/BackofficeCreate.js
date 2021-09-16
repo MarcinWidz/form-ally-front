@@ -7,11 +7,11 @@ import "../../assets/TellMeMore/fonts/tellmemore.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useHistory } from "react-router-dom";
 import "react-notifications/lib/notifications.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function BackofficeCreate() {
   const [title, setTitle] = useState("");
-  const [slug, setSlug] = useState();
-  const [alert, setAlert] = useState();
   const [questionsData, setQuestionsData] = useState([]);
   const [order, setOrder] = useState(1);
   const [body, setBody] = useState("");
@@ -19,6 +19,33 @@ function BackofficeCreate() {
   const [show, setShow] = useState(false);
   const [saved, setSaved] = useState(false);
   const history = useHistory();
+
+  const objectToSend = { body: body, order: order, type: type };
+
+  const emptyQuestion = () => {
+    toast.warning("Le champ de question ne peux pas être vide!", {
+      position: toast.POSITION.BOTTOM_RIGHT,
+      hideProgressBar: true,
+    });
+  };
+  const emptyTitle = () => {
+    toast.warning("Le titre du formulaire ne peux pas être vide", {
+      position: toast.POSITION.BOTTOM_RIGHT,
+      hideProgressBar: true,
+    });
+  };
+  const noQuestions = () => {
+    toast.warning("Il faut ajouter au moins une question", {
+      position: toast.POSITION.BOTTOM_RIGHT,
+      hideProgressBar: true,
+    });
+  };
+  const invalidEmail = () => {
+    toast.warning("Veuillez renseigner un adresse e-mail valide", {
+      position: toast.POSITION.BOTTOM_RIGHT,
+      hideProgressBar: true,
+    });
+  };
 
   const handleTitleChange = (event) => {
     const value = event.target.value;
@@ -28,10 +55,6 @@ function BackofficeCreate() {
   const handleBodyChange = (event) => {
     setBody(event.target.value);
   };
-
-  const objectToSend = { body: body, order: order, type: type };
-
-  console.log("objectToSend:", objectToSend);
 
   const handleAddQuestion = async (type) => {
     setSaved(true);
@@ -52,18 +75,17 @@ function BackofficeCreate() {
       }
       setOrder(order + 1);
     } else {
-      setAlert("Le champ de question ne peux pas être vide!");
+      emptyQuestion();
     }
   };
   console.log("QUESTIONS DATA:", questionsData);
   const handleSaveClick = async () => {
     if (!title) {
-      setAlert("Le titre du formulaire ne peux pas être vide");
+      emptyTitle();
       return;
     } else if (questionsData.length === 0) {
-      setAlert("Il faut ajouter au moins une question");
+      noQuestions();
     } else {
-      setAlert(null);
       try {
         const response = await axios.post(
           "https://https://form-ally.herokuapp.com/backoffice/create",
@@ -84,6 +106,16 @@ function BackofficeCreate() {
 
   const handleQuestionCreation = (type) => {
     setType(type);
+    if (type === "email") {
+      const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+      const result = regex(body);
+      console.log("REGEX RESULT", result);
+      if (result !== true) {
+        invalidEmail();
+      }
+    } else {
+      setShow(true);
+    }
     setShow(true);
   };
 
@@ -132,7 +164,9 @@ function BackofficeCreate() {
           </button>
         </div>
       </div>
-      <p className='alert'>{alert}</p>
+      <p className='alert'>
+        <ToastContainer />
+      </p>
       <div className='questionCreationContainer'>
         <div className='questions'>
           <div

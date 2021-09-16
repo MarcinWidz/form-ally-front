@@ -4,9 +4,9 @@ import { useHistory, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import colors from "../../assets/themes";
+import Loading from "../../Components/Loading";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { auto } from "async";
 
 function BackofficeUpdate({ e }) {
   const location = useLocation();
@@ -19,8 +19,6 @@ function BackofficeUpdate({ e }) {
 
   const id = location.state.e._id;
   const form = location.state.e;
-
-  console.log(location.state.e);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -83,7 +81,7 @@ function BackofficeUpdate({ e }) {
   };
 
   return isLoading ? (
-    <p>chargement...</p>
+    <Loading />
   ) : (
     <div>
       <div>
@@ -125,7 +123,13 @@ function BackofficeUpdate({ e }) {
               <div className='question-component'>
                 <div className='order-type'>
                   {e.type === "note" ? (
-                    <div style={{ display: "flex", alignItems: "center" }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        marginTop: "20px",
+                      }}
+                    >
                       <div className='note-component-div'>
                         <p className='order'>{e.order}</p>
                         <FontAwesomeIcon
@@ -138,7 +142,13 @@ function BackofficeUpdate({ e }) {
                       <p>{e.body}</p>
                     </div>
                   ) : e.type === "text" ? (
-                    <div style={{ display: "flex", alignItems: "center" }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        marginTop: "20px",
+                      }}
+                    >
                       <div className='text-component-div'>
                         <p className='order'>{e.order}</p>
                         <FontAwesomeIcon
@@ -151,7 +161,13 @@ function BackofficeUpdate({ e }) {
                       <p>{e.body}</p>
                     </div>
                   ) : e.type === "yes/no" ? (
-                    <div style={{ display: "flex", alignItems: "center" }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        marginTop: "20px",
+                      }}
+                    >
                       <div className='yes-component-div'>
                         <FontAwesomeIcon
                           style={{ color: "white" }}
@@ -164,7 +180,13 @@ function BackofficeUpdate({ e }) {
                       <p>{e.body}</p>
                     </div>
                   ) : (
-                    <div style={{ display: "flex", alignItems: "center" }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        marginTop: "20px",
+                      }}
+                    >
                       <div className='email-component-div'>
                         <p className='order'>{e.order}</p>
                         <FontAwesomeIcon

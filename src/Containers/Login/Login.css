@@ -14,7 +14,7 @@ h1 {
 }
 
 .login-input {
-  border: 1px solid #62c172;
+  border: 1px solid #4595e4;
   border-radius: 5px;
   height: 50px;
   width: 300px;
@@ -24,7 +24,7 @@ h1 {
 
 .login-button {
   cursor: pointer;
-  background-color: #62c167;
+  background-color: #4595e4;
   color: white;
   display: flex;
   justify-content: center;
@@ -36,5 +36,10 @@ h1 {
   border: none;
   height: 50px;
   flex: 1;
-  margin: 10 px;
+}
+
+.login-button:hover {
+  background-color: white;
+  border: solid 1px #4595e4;
+  color: #4595e4;
 }

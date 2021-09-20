@@ -29,7 +29,6 @@ function BackofficeUpdate({ e }) {
         console.log("mapforms:", response.data);
         setUserForms(response.data);
         setisLoading(false);
-        console.log("backOffice Homee response:", response.data);
       } catch (error) {
         console.log(error.message);
       }
@@ -117,7 +116,7 @@ function BackofficeUpdate({ e }) {
         </div>
       </div>
       <div>
-        {form.questions.map((e) => {
+        {userForms.questions.map((e) => {
           return (
             <div>
               <div className='question-component'>

@@ -57,6 +57,7 @@ function Login({
     } catch (error) {
       console.log(error.message);
     }
+    setLogged(true);
   };
 
   return (

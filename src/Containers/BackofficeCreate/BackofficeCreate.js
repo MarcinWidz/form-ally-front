@@ -120,7 +120,7 @@ function BackofficeCreate() {
     } else {
       try {
         const response = await axios.post(
-          "https://https://form-ally.herokuapp.com/backoffice/create",
+          "https://form-ally.herokuapp.com/backoffice/create",
           {
             title: title,
             slug: title,

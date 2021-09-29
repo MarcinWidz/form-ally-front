@@ -17,11 +17,7 @@
   align-items: center;
   cursor: poiner;
   margin: 10px;
-  background: linear-gradient(
-    270deg,
-    #62c188 0%,
-    rgba(98, 193, 136, 0.5) 98.55%
-  );
+  background: linear-gradient(270deg, #4595e4 0%, rgba(69, 149, 228, 0.438));
   border-radius: 10px;
   color: white;
   border: none;

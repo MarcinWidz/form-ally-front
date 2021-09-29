@@ -9,9 +9,6 @@ function FormBackoffice({ e }) {
     <div className='form-placeholder'>
       <h4>{e.title}</h4>
       <div className='btns-form-div'>
-        <Link to={{ pathname: "/backoffice/update", state: { e: e } }}>
-          <div className='editer'>Editer</div>
-        </Link>
         <Link to={{ pathname: "/backoffice/answers", state: { e: e } }}>
           <div className='voir'>Voir</div>
         </Link>

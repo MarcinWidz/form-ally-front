@@ -1,7 +1,10 @@
 .question-component {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 20px;
+  font-size: 26px;
+  color: #0e401c;
 }
 
 .input-field {
@@ -9,23 +12,26 @@
   height: 50px;
   border-radius: 5px;
   border: none;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   outline: none;
   padding-left: 20px;
 }
 
 .addQuestion {
   cursor: pointer;
-  background-color: #62c167;
+  background-color: #4595e4;
   color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 9px;
   font-size: 18px;
   border-radius: 5px;
   width: 100px;
   border: none;
+  padding: 10px;
+}
+
+.addQuestion:hover {
+  border: solid 1px #4595e4;
+  background-color: transparent;
+  color: #4595e4;
 }
 
 .text-component-div {
@@ -75,16 +81,21 @@
 
 .delete {
   cursor: pointer;
-  background-color: white;
-  color: #62c167;
+  background-color: transparent;
+  color: #4595e4;
   padding: 0 9px;
   font-size: 18px;
   border-radius: 5px;
   font-weight: 700;
   border: none;
   padding: 10px;
-  margin: 10px;
-  border: solid 1px #62c167;
+  border: solid 1px #4595e4;
+  width: 100px;
+}
+
+.delete:hover {
+  color: white;
+  background-color: #4595e4;
 }
 
 .icon {

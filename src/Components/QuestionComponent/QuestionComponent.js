@@ -1,7 +1,6 @@
 import ".//QuestionComponent.css";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
 
 function QuestionComponent({
   order,
@@ -17,16 +16,12 @@ function QuestionComponent({
 }) {
   const handleDelete = async () => {
     try {
-      console.log(questionsData);
       const response = axios.delete(
         `https://form-ally.herokuapp.com/backoffice/delete/${questionsData[index]._id}`
       );
       const copy = [...questionsData];
       copy.splice(index, 1);
-      console.log(index);
       setQuestionsData(copy);
-      console.log("QUESTiON DATA:", questionsData);
-      console.log(response.data);
     } catch (error) {
       console.log(error.message);
     }
@@ -95,5 +90,3 @@ function QuestionComponent({
 }
 
 export default QuestionComponent;
-
-// if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(body))

@@ -1,7 +1,7 @@
 .form-user-front {
   width: 300px;
   height: 150px;
-  border: solid black 1px;
+  border: solid #1c528a 1px;
 }
 
 .note-field {
@@ -25,12 +25,12 @@
 }
 
 .input-div input:checked ~ .note-field {
-  background-color: #62c193;
+  background-color: #4595e4;
   color: white;
 }
 
 .input-div input:checked {
-  background-color: #62c193;
+  background-color: #4595e4;
 }
 
 /* Create a custom radio button */

@@ -1,7 +1,7 @@
 .restartBtn {
   cursor: pointer;
-  border: 1px solid #62c167;
-  color: #62c167;
+  border: 1px solid #4595e4;
+  color: #4595e4;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,7 +14,7 @@
 }
 
 .restartBtn:hover {
-  background-color: #62c167;
+  background-color: #4595e4;
   color: white;
 }
 

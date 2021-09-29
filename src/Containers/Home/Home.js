@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./Home.css";
 import axios from "axios";
 import FormUserFront from "../../Components/FormUserFront/FormUserFront";
+import loading from "../../assets/loading.json";
 
 function Home() {
   const [isLoading, setisLoading] = useState(true);
@@ -24,7 +25,17 @@ function Home() {
     fetchData();
   }, []);
   return isLoading ? (
-    <p>Chargement...</p>
+    <div>
+      <script src='https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js'></script>
+      <lottie-player
+        src='https://assets10.lottiefiles.com/packages/lf20_giIhuM.json'
+        background='transparent'
+        speed='1'
+        style={{ width: "300px", height: "300px" }}
+        loop
+        autoplay
+      ></lottie-player>
+    </div>
   ) : (
     <div className='home-container'>
       <h1>Choisissez le questionnaire à prendre:</h1>

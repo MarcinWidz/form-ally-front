@@ -6,7 +6,6 @@ import axios from "axios";
 import colors from "../../assets/themes";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { auto } from "async";
 
 function BackofficeUpdate({ e }) {
   const location = useLocation();

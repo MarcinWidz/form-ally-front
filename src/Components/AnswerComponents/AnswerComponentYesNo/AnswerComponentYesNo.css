@@ -2,10 +2,24 @@
   display: flex;
 }
 
-.yesNoButtons {
+.yesButton {
   cursor: pointer;
-  border: 1px solid #62c167;
-  color: #62c167;
+  border: 1px solid #4595e4;
+  color: #4595e4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  font-size: 28px;
+  border-radius: 5px;
+  margin-right: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.noButton {
+  cursor: pointer;
+  border: 1px solid #4595e4;
+  color: #4595e4;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,7 +31,21 @@
   margin-bottom: 15px;
 }
 
-.yesNoButtons:hover {
-  background-color: #62c167;
+.yesButton:hover {
+  background-color: #4595e4;
+  color: white;
+}
+
+.yesClicked {
+  background-color: #4595e4;
+  color: white;
+}
+.noClicked {
+  background-color: #4595e4;
+  color: white;
+}
+
+.noButton:hover {
+  background-color: #4595e4;
   color: white;
 }

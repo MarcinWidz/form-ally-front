@@ -1,15 +1,19 @@
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 1024px;
   margin: 0 auto;
   flex: 1;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .title {
   width: 300px;
   height: 30px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border: none;
 }
 
 .alert {
@@ -22,11 +26,11 @@
   margin-top: 20px;
   display: flex;
   justify-content: space-around;
-  color: #62c167;
+  color: #4595e4;
 }
 
 .questions div {
-  border: solid 1px #62c167;
+  border: solid 1px #4595e4;
   padding: 10px;
   cursor: pointer;
   border-radius: 5px;
@@ -34,7 +38,7 @@
 }
 
 .questions div:hover {
-  background-color: #62c167;
+  background-color: #4595e4;
   color: white;
 }
 
@@ -43,25 +47,23 @@
 }
 
 .icon {
-  color: #62c167;
+  color: inherit;
   margin-right: 5px;
-}
-.icon:hover {
-  color: white;
 }
 
 .questionCreationContainer {
-  background-color: #eaf9ec;
+  background-color: #e7eff6;
   width: 1024px;
   margin: 0 auto;
   height: 100vh;
   border-radius: 15px;
   padding: 15px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .backBtn {
   cursor: pointer;
-  background-color: #62c167;
+  background-color: #4595e4;
   color: white;
   padding: 0 9px;
   font-size: 18px;
@@ -74,24 +76,23 @@
 
 .backBtn:hover {
   background-color: white;
-  color: #62c167;
-  border: 1px solid #62c167;
+  color: #4595e4;
+  border: 1px solid #4595e4;
 }
 .saveBtn {
   cursor: pointer;
   background-color: white;
-  color: #62c167;
-  padding: 0 9px;
+  color: #4595e4;
   font-size: 18px;
   border-radius: 5px;
   font-weight: 700;
   border: none;
   padding: 10px;
   margin: 10px;
-  border: solid 1px #62c167;
+  border: solid 1px #4595e4;
 }
 
 .saveBtn:hover {
-  background-color: #62c167;
+  background-color: #4595e4;
   color: white;
 }

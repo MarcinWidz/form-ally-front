@@ -85,8 +85,6 @@ function FormUserAnswer(props) {
     }
   };
 
-  console.log("length:", length);
-  console.log("counter:", counter);
   return (
     <div className='bodyDiv'>
       <div className='center'>

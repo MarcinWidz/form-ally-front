@@ -65,13 +65,13 @@
   cursor: pointer;
   background-color: #4595e4;
   color: white;
-  padding: 0 9px;
   font-size: 18px;
   border-radius: 5px;
   font-weight: 700;
   border: none;
   padding: 10px;
   margin: 10px;
+  border: 1px solid #4595e4;
 }
 
 .backBtn:hover {

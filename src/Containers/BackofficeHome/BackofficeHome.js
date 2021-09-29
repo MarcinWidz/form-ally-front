@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./BackofficeHome.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Loading from "../../Components/Loading";
 
 import FormBackoffice from "../../Components/FormBackoffice/FormBackoffice";
 
@@ -29,7 +30,7 @@ function BackofficeHome({ userId }) {
 
   console.log("userId in home:", userId);
   return isLoading ? (
-    <p>Chargement...</p>
+    <Loading />
   ) : (
     <div className='container'>
       <Link to='/backoffice/create'>

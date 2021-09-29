@@ -40,12 +40,7 @@ function BackofficeCreate() {
       hideProgressBar: true,
     });
   };
-  const invalidEmail = () => {
-    toast.warning("Veuillez renseigner un adresse e-mail valide", {
-      position: toast.POSITION.BOTTOM_RIGHT,
-      hideProgressBar: true,
-    });
-  };
+
 
   const handleTitleChange = (event) => {
     const value = event.target.value;
@@ -57,35 +52,6 @@ function BackofficeCreate() {
   };
 
   const handleAddQuestion = async (type) => {
-    if (type === "email") {
-      const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
-      const result = regex.test(body);
-      console.log("REGEX RESULT", result);
-      if (result !== true) {
-        invalidEmail();
-      } else {
-        setSaved(true);
-        if (body) {
-          try {
-            const response = await axios.post(
-              "https://form-ally.herokuapp.com/backoffice/create/questions",
-              objectToSend
-            );
-            console.log("response:", response.data);
-            console.log("OBJECT TO SEND:", objectToSend);
-            const copy = [...questionsData];
-            copy.push(response.data);
-            setQuestionsData(copy);
-            setBody("");
-          } catch (error) {
-            console.log(error.message);
-          }
-          setOrder(order + 1);
-        } else {
-          emptyQuestion();
-        }
-      }
-    } else {
       setSaved(true);
       if (body) {
         try {
@@ -106,7 +72,6 @@ function BackofficeCreate() {
       } else {
         emptyQuestion();
       }
-    }
   };
 
   console.log("QUESTIONS DATA:", questionsData);

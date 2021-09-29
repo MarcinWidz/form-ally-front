@@ -55,10 +55,12 @@ function FormUserAnswer(props) {
     }
   };
 
-  console.log("UUID", uuidState);
-  console.log("dataToSendState:", dataToSend);
-  console.log("formInfo._id:", formInfo._id);
-
+  // const invalidEmail = () => {
+  //   toast.warning("Veuillez renseigner un adresse e-mail valide", {
+  //     position: toast.POSITION.BOTTOM_RIGHT,
+  //     hideProgressBar: true,
+  //   });
+  // };
   const updateQuestionAnswers = async (answer) => {
     console.log("ID:", answer);
     try {
@@ -67,7 +69,6 @@ function FormUserAnswer(props) {
         answer
       );
       console.log("update:", response.data);
-      console.log("ANSWER:", answer);
     } catch (error) {
       console.log(error.message);
     }
@@ -79,7 +80,6 @@ function FormUserAnswer(props) {
       setCounter(counter + 1);
     } else {
       sendData();
-      console.log("dataToSendLastSend:", dataToSend);
       setSent(true);
       console.log("SENT:", sent);
     }
